@@ -1,16 +1,20 @@
 package utils;
 
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.util.Date;
 
 public class CommonMethods extends PageInitializer{
 
@@ -54,7 +58,7 @@ public class CommonMethods extends PageInitializer{
     }
 
     /**
-     * This method closes the browser if it is opene
+     * Closes the browser if it is opene
      * will check if the driver is not null before attempting to quit the browser
      */
     public static void closeBrowser(){
@@ -64,7 +68,7 @@ public class CommonMethods extends PageInitializer{
     }
 
     /**
-     * This method sends a text to the documented webelement, optionally clearing it first
+     * Sends a text to the documented webelement, optionally clearing it first
      * @param text the text to send
      * @param element the webelement the text will be sent to
      * @param clear will clear the element before sending text
@@ -77,7 +81,7 @@ public class CommonMethods extends PageInitializer{
     }
 
     /**
-     * This method sends a text to the documented webelement, optionally clearing it first
+     * Sends a text to the documented webelement, optionally clearing it first
      * @param text the text to send
      * @param element the webelement the text will be sent to
      */
@@ -99,7 +103,7 @@ public class CommonMethods extends PageInitializer{
     }
 
     /**
-     * This method waits for an element to be clickable
+     * Waits for an element to be clickable
      *
      *  Utilizes the getWait() method, which creates a WebDriverWait instance
      *  using the configured WebDriver and the explicit wait timeout defined
@@ -111,7 +115,7 @@ public class CommonMethods extends PageInitializer{
     }
 
     /**
-     * This method clicks on the element after waiting for it to be clickable
+     * Clicks on the element after waiting for it to be clickable
      * @param element
      */
     public static void click(WebElement element){
@@ -137,10 +141,74 @@ public class CommonMethods extends PageInitializer{
         return js;
     }
 
+    /**
+     * Clicks on a WebElement using JavaScript.
+     * <p>
+     * This is useful when standard Selenium .click() fails due to visibility or DOM issues.
+     *
+     * @param element the WebElement to be clicked
+     */
     public void jsClick(WebElement element){
+        getJSExecutor().executeScript("arguments[0].click();",element);
+    }
+
+    /**
+     * This method selects an option from the dropdown using the option's value attribute
+     * @param value the value attribute of the option to select
+     * @param element the dropdown WebElement
+     */
+    public static void selectByValue(WebElement element, String value){
+        Select sel=new Select(element);
+        sel.selectByValue(value);
 
     }
 
+    /**
+     * This method selects an option from the dropdown using visible text
+     * @param element the dropdown WebElement
+     * @param text the visible text of the option to select
+     */
+    public static void selectByVisibleText(WebElement element, String text){
+        Select sel=new Select(element);
+        sel.selectByVisibleText(text);
+    }
 
+    /**
+     * This method selects an option from the dropdown using the index
+     * @param element the dropdown WebElement
+     * @param index the index of the option to select
+     */
+    public static void selectByIndex(WebElement element, int index){
+        Select sel=new Select(element);
+        sel.selectByIndex(index);
+    }
+
+    /**
+     * Takes a screenshot of the current browser window and saves it in the specified file
+     * Also returns the screenshot as a byte array for use in reports or attachments
+     * @param fileName the base name to use when saving the screenshot
+     * @return a byte array containing the screenshot in PNG format
+     */
+    public byte[] takeScreenshot(String fileName){
+        TakesScreenshot ts = (TakesScreenshot) driver;
+        byte[] picByte = ts.getScreenshotAs(OutputType.BYTES);
+        File sourceFile = ts.getScreenshotAs(OutputType.FILE);
+
+        try{
+            FileUtils.copyFile(sourceFile, new File(Constants.SCREENSHOT_FILE_PATH + fileName+" " +
+                    getTimeStamp("yyyy-MM-dd-HH-mm-ss")+".png"));
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+        return picByte;
+    }
+
+    public String getTimeStamp(String pattern){
+        Date date = new Date();
+
+            SimpleDateFormat sdf = new SimpleDateFormat(pattern);
+            return sdf.format(date);
+
+    }
 
 }
