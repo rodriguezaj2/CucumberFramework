@@ -6,6 +6,5 @@ public class Constants {
     public static final int EXPLICIT_WAIT=20;
     public static final int IMPLICIT_WAIT=10;
     public static final String EXCEL_FILE_PATH=System.getProperty("user.dir")+"PENDING";
-    public static final String SCREENSHOT_FILE_PATH=System.getProperty("user.dir")+"/screenshots";
-    public static final String PROFILE_PIC_FILE_PATH="PENDING";
+    public static final String SCREENSHOT_FILE_PATH=System.getProperty("user.dir")+"/screenshots/";
 }
