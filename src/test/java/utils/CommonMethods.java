@@ -58,7 +58,7 @@ public class CommonMethods extends PageInitializer{
     }
 
     /**
-     * Closes the browser if it is opene
+     * Closes the browser if it is opened
      * will check if the driver is not null before attempting to quit the browser
      */
     public static void closeBrowser(){
