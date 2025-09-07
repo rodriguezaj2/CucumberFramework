@@ -103,6 +103,8 @@
                 <configuration>
                     <includes>
                         <include>/*TestRunner.java</include>
+                        <include>**/*Test.java</include>
+                        <include>**/*Runner.java</include>
                     </includes>
                 </configuration>
             </plugin>
