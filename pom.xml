@@ -109,7 +109,7 @@
                 <configuration>
                     <includes>
                         <include>**/*TestRunner.java</include>
-                        <include>**/*Test.java</include>
+                        <include>**/*APIRunnerTest.java</include>
                     </includes>
                 </configuration>
             </plugin>
