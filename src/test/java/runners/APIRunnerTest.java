@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = "src/test/resources/features/API",
+        features = "src/test/resources/features/API/",
         glue = "steps/API",
         dryRun = false,
         tags = "@createUser",
