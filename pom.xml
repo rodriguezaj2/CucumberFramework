@@ -102,8 +102,8 @@
                 <version>3.5.3</version>
                 <configuration>
                     <includes>
+                        <include>**/*TestRunner.java</include>
                         <include>**/*Test.java</include>
-                        <include>**/*Runner.java</include>
                     </includes>
                 </configuration>
             </plugin>
@@ -120,9 +120,8 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <projectName>CucumberProjectNew</projectName>
+                            <projectName>AnthonyProject</projectName>
                             <!-- optional, per documentation set this to "true" to bypass generation of Cucumber Reports entirely, defaults to false if not specified -->
-
                             <!-- output directory for the generated report -->
                             <outputDirectory>${project.build.directory}</outputDirectory>
                             <!-- optional, defaults to outputDirectory if not specified -->
@@ -132,14 +131,11 @@
                                 <param>**/*.json</param>
                             </jsonFiles>
                             <!-- optional, defaults to outputDirectory if not specified -->
-
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
         </plugins>
     </build>
-
-
 
 </project>
