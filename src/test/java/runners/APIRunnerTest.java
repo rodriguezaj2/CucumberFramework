@@ -7,7 +7,7 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         features = "classpath:features/API",
-        glue = "steps/API",
+        glue = "steps.API",
         dryRun = false,
         tags = "@createUser",
         plugin = {"pretty","html:target/cucumber.html","rerun:target/failed.txt","json:target/cucumber.json"}
