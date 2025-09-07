@@ -7,4 +7,4 @@ Scenario: Create User
   Then the status code is 201
   And the employee created contains the key "Message" and value "User Created"
   And the employee created contains the key "user.name" and value "Sora"
-  And the employee created contains the key "user.email" and value "KingdomHearts2002@gmail.com"
+  And the employee created contains the key "user.email" and value "KingdomHeartssss2002@gmail.com"
