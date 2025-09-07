@@ -102,7 +102,6 @@
                 <version>3.5.3</version>
                 <configuration>
                     <includes>
-                        <include>/*TestRunner.java</include>
                         <include>**/*Test.java</include>
                         <include>**/*Runner.java</include>
                     </includes>
@@ -130,7 +129,7 @@
                             <inputDirectory>${project.build.directory}</inputDirectory>
                             <jsonFiles>
                                 <!-- supports wildcard or name pattern -->
-                                <param>/*.json</param>
+                                <param>**/*.json</param>
                             </jsonFiles>
                             <!-- optional, defaults to outputDirectory if not specified -->
 
