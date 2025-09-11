@@ -1,3 +1,4 @@
+@api
 Feature: Create User API
 
   @createUser

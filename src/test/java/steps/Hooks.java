@@ -7,12 +7,12 @@ import utils.CommonMethods;
 
 public class Hooks extends CommonMethods {
 
-    @Before
+    @Before ("@ui")
     public void start(){
         openBrowserAndLaunchApplication();
     }
 
-    @After
+    @After ("@ui")
     public void end(Scenario scenario){
         byte[] pic;
 

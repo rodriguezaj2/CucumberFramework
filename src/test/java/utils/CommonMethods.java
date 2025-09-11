@@ -29,10 +29,10 @@ public class CommonMethods extends PageInitializer{
                  * use ChromeOptions when running headless during CI/CD
                  */
 
-                ChromeOptions options = new ChromeOptions();
+              /*  ChromeOptions options = new ChromeOptions();
                 options.addArguments("--headless");
-                driver=new ChromeDriver(options);
-               // driver=new ChromeDriver();
+                driver=new ChromeDriver(options);*/
+                driver=new ChromeDriver();
                 break;
 
             case "FireFox":
